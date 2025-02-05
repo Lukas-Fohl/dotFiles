@@ -13,5 +13,5 @@ size = 10.0
 
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"
+    "~/.config/alacritty/themes/gruvbox_material_medium_dark.toml"
 ]
