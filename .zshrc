@@ -109,16 +109,17 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias sudo='nocorrect sudo '
 alias dokcer="docker"
-alias google="(google-chrome --password-store=gnome-libsecret &) && exit"
-alias zen="(/opt/zen/zen-bin &) && exit"
-alias discord="(/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=com.discordapp.Discord com.discordapp.Discord )"
 alias mkae="make"
+alias google="(google-chrome --password-store=gnome-libsecret &) && exit"
+alias discord="(/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=com.discordapp.Discord com.discordapp.Discord )"
 alias updateMeDaddy="sudo apt-get update -y && sudo apt-get upgrade -y"
 alias ll="ls -la"
 alias fuck="init 0"
 alias v="vim"
+alias pwdc="pwd | xclip"
+alias cdc="cd $(xclip -o)"
 
-export PATH=$PATH:/usr/local/go/bin  
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/snap/bin
 csPrice & 
