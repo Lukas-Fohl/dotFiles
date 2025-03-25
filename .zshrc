@@ -116,8 +116,18 @@ alias updateMeDaddy="sudo apt-get update -y && sudo apt-get upgrade -y"
 alias ll="ls -la"
 alias fuck="init 0"
 alias v="vim"
-alias pwdc="pwd | xclip"
-alias cdc="cd $(xclip -o)"
+pwdc() {
+    echo $(pwd) > ~/.copied_path
+}
+
+cdc() {
+  if [[ ! -f ~/.copied_path ]]; then
+    echo "No path copied"
+    return 1
+  fi
+  COPIED_PATH=$(cat ~/.copied_path)
+  cd "$COPIED_PATH" || return 1
+}
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
