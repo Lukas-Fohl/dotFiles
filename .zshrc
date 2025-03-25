@@ -103,8 +103,8 @@ essen(){
     curl -s https://www.stwhh.de/gastronomie/mensen-cafes-weiteres/mensa/mensa-harburg | awk '/h5/{getline; gsub(/^[ \t]+|<\/div>/, ""); printf "%s \n", $0} END {print ""}'
 }
 
-alias csPrice="python3 /home/lukas/code/csprice/main.py"
-alias csPlot="python3 /home/lukas/code/csprice/plot.py"
+alias csPrice="python3 $HOME/code/csprice/main.py"
+alias csPlot="python3 $HOME/code/csprice/plot.py"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias sudo='nocorrect sudo '
@@ -116,17 +116,17 @@ alias updateMeDaddy="sudo apt-get update -y && sudo apt-get upgrade -y"
 alias ll="ls -la"
 alias fuck="init 0"
 alias v="vim"
+
 pwdc() {
-    echo $(pwd) > ~/.copied_path
+    echo $(pwd) > $HOME/.copied_path
 }
 
 cdc() {
-  if [[ ! -f ~/.copied_path ]]; then
+  if [[ ! -f $HOME/.copied_path ]]; then
     echo "No path copied"
     return 1
   fi
-  COPIED_PATH=$(cat ~/.copied_path)
-  cd "$COPIED_PATH" || return 1
+  cd $(cat $HOME/.copied_path) || return 1
 }
 
 export PATH=$PATH:/usr/local/go/bin
