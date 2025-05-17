@@ -1,6 +1,6 @@
 [window]
 
-opacity = 1.0 
+opacity = 1.0
 
 padding.x = 10
 padding.y = 10
@@ -9,9 +9,9 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Dark"
 
 [font]
-size = 10.0
+size = 12.0
 
 [general]
 import = [
-    "~/.config/alacritty/themes/gruvbox_material_medium_dark.toml"
+    "~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"
 ]

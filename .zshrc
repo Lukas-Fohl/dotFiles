@@ -105,17 +105,18 @@ essen(){
 
 alias csPrice="python3 $HOME/code/csprice/main.py"
 alias csPlot="python3 $HOME/code/csprice/plot.py"
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias sudo='nocorrect sudo '
 alias dokcer="docker"
 alias mkae="make"
+alias maek="make"
 alias google="(google-chrome --password-store=gnome-libsecret &) && exit"
 alias discord="(/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=com.discordapp.Discord com.discordapp.Discord )"
 alias updateMeDaddy="sudo apt-get update -y && sudo apt-get upgrade -y"
 alias ll="ls -la"
 alias fuck="init 0"
-alias v="vim"
+alias v="nvim"
 
 pwdc() {
     echo $(pwd) > $HOME/.copied_path
@@ -129,10 +130,15 @@ cdc() {
   cd $(cat $HOME/.copied_path) || return 1
 }
 
+csPrice&
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  tmux
+fi
+
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/snap/bin
-csPrice & 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -140,3 +146,4 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f "/home/lukas/.ghcup/env" ] && . "/home/lukas/.ghcup/env" # ghcup-env
 #sl -e -F -l
+
