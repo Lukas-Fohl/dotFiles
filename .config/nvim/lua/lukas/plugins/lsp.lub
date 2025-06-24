@@ -6,12 +6,10 @@ return {
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      -- Enable clangd
       lspconfig.clangd.setup({
         capabilities = capabilities,
       })
 
-      -- Enable pyright for Python
       lspconfig.pyright.setup({
         capabilities = capabilities,
         -- settings = {
@@ -19,20 +17,6 @@ return {
         --     pythonPath = 'path/to/your/python/env/bin/python',
         --   },
         -- },
-      })
-
-      -- Enable gopls for Go
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-        cmd = { "gopls" }, -- This is the default, but good to be explicit
-        settings = {
-          gopls = {
-            analyses = {
-              unusedparams = true,
-            },
-            staticcheck = true,
-          },
-        },
       })
     end,
   },

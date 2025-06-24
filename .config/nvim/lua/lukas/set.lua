@@ -16,6 +16,7 @@ vim.opt.swapfile = false
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
 
 vim.opt.termguicolors = true
 
@@ -50,4 +51,5 @@ require("gruvbox").setup({
   dim_inactive = false,
   transparent_mode = false,
 })
+
 vim.cmd("colorscheme gruvbox")
