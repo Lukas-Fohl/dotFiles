@@ -26,9 +26,8 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
--- Default options:
 require("gruvbox").setup({
-  terminal_colors = true, -- add neovim terminal colors
+  terminal_colors = true,
   undercurl = true,
   underline = true,
   bold = true,
@@ -44,8 +43,8 @@ require("gruvbox").setup({
   invert_signs = false,
   invert_tabline = false,
   invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "", -- can be "hard", "soft" or empty string
+  inverse = true,
+  contrast = "",
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,

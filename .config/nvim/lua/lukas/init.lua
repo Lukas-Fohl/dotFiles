@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 require("lukas.lazy")
 
 require("lukas.remap")

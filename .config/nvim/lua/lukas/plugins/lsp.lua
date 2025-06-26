@@ -11,20 +11,15 @@ return {
         capabilities = capabilities,
       })
 
-      -- Enable pyright for Python
+      -- Enable pyright
       lspconfig.pyright.setup({
         capabilities = capabilities,
-        -- settings = {
-        --   python = {
-        --     pythonPath = 'path/to/your/python/env/bin/python',
-        --   },
-        -- },
       })
 
-      -- Enable gopls for Go
+      -- Enable gopls
       lspconfig.gopls.setup({
         capabilities = capabilities,
-        cmd = { "gopls" }, -- This is the default, but good to be explicit
+        cmd = { "gopls" },
         settings = {
           gopls = {
             analyses = {
