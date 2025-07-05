@@ -52,3 +52,6 @@ require("gruvbox").setup({
 })
 
 vim.cmd("colorscheme gruvbox")
+
+vim.o.list = true
+vim.o.listchars = 'tab:» ,lead:·,trail:·'

@@ -21,7 +21,7 @@ return {
 
     local harpoon = require("harpoon")
 
-    vim.keymap.set("n", "<leader>r", function()
+    vim.keymap.set("n", "<leader>d", function()
         local harpoon = require("harpoon")
         local list = harpoon:list()
 
@@ -43,9 +43,15 @@ return {
     map("n", "<leader>a", function() harpoon:list():add() end, "Harpoon Add File")
     map("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Harpoon Menu")
 
-    map("n", "<C-h>", function() harpoon:list():next() end, "Harpoon next File")
-    map("n", "<C-l>", function() harpoon:list():prev() end, "Harpoon prev File")
+    --map("n", "<C-l>", function() harpoon:list():next() end, "Harpoon next File")
+    --map("n", "<C-h>", function() harpoon:list():prev() end, "Harpoon prev File")
     --map("n", "<leader>c", function() harpoon:list():clear() end, "Harpoon clear list")
+
+    map("n", "<leader>q", function() harpoon:list():select(1) end)
+    map("n", "<leader>w", function() harpoon:list():select(2) end)
+    map("n", "<leader>e", function() harpoon:list():select(3) end)
+    map("n", "<leader>r", function() harpoon:list():select(4) end)
+    map("n", "<leader>t", function() harpoon:list():select(5) end)
   end,
 }
 
