@@ -59,8 +59,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
-#bindsym $mod+d exec rofi -show run
+#bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec rofi -show run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -70,9 +70,13 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l exec i3lock 
+bindsym $mod+l exec i3lock
 bindsym $mod+odiaeresis focus right
+
+#other
 bindsym $mod+Shift+f exec firefox 'https://spinning.fish'
+bindsym $mod+Shift+m exec ~/code/mouse/main
+bindsym $mod+Shift+Escape exec /snap/bin/mission-center
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -190,12 +194,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#gaps inner 10px
+#gaps inner 15px
 #gaps outer 5px
-#exec --no-startup-id xsetroot -solid "#333333"
-#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/linux2.jpg
+#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/gruv.png
+#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/haskell.jpg
+#exec_always --no-startup-id feh --bg-tile /home/lukas/Bilder/elon.jpeg
+exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/portal.png
 #exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
-
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #3c3c3c #285566 #ffffff #3c3c3c   #3c3c3c
@@ -204,19 +209,18 @@ client.unfocused        #3c3c3c #222222 #888888 #292d2e   #3c3c3c
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
     status_command i3status
-    colors {
-        background #000000
-        statusline #ffffff
-    }
+        colors {
+            background #000000
+            statusline #ffffff
+        }
 }
 
-exec --no-startup-id i3-msg 'workspace 1:Term; exec /home/lukas/.cargo/bin/alacritty'
+exec --no-startup-id xmodmap -e "clear Lock" -e "keycode 66 = Escape Caps_Lock Escape"
+
+exec --no-startup-id i3-msg "workspace 1:Term; exec /home/lukas/.cargo/bin/alacritty"
+#exec --no-startup-id i3-msg "workspace 3:Web; exec /usr/bin/firefox"
 #exec --no-startup-id i3-msg 'workspace 2:Code; exec /home/lukas/.cargo/bin/alacritty'
-#exec --no-startup-id i3-msg 'workspace 3:Web; exec /usr/bin/firefox'
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets

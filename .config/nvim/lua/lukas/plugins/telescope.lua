@@ -6,6 +6,11 @@ return{
         function() require("telescope.builtin").find_files({ cwd = vim.fn.getcwd()}) end,
         desc = "Find Plugin File",
       },
+      {
+          "<C-l>",
+          function() require("telescope.builtin").live_grep({ cwd = vim.fn.getcwd()}) end,
+          desc = "Find Plugin Grep",
+      };
     },
     opts = {
       defaults = {

@@ -139,6 +139,7 @@ cdc() {
 }
 
 csPrice&
+
 #ALACRITTY VIM
 export KEYTIMEOUT=1
 bindkey -v
@@ -151,6 +152,28 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-[ -f "/home/lukas/.ghcup/env" ] && . "/home/lukas/.ghcup/env" # ghcup-env
-#sl -e -F -l
+if [[ -z "$TMUX" ]] && [ "$TERM" != "linux" ]; then
+  tmux attach || tmux
+fi
 
+sess(){
+    session=$(tmux list-sessions -F '#S' 2>/dev/null | fzf)
+
+    if [ -n "$session" ]; then
+      if [ -n "$TMUX" ]; then
+        tmux switch-client -t "$session"
+      else
+        tmux attach-session -t "$session"
+      fi
+    else
+      new_name="new_$(date +%s)"
+      if [ -n "$TMUX" ]; then
+        tmux new-session -d -s "$new_name"
+        tmux switch-client -t "$new_name"
+      else
+        tmux new-session -s "$new_name"
+      fi
+    fi
+}
+
+[ -f "/home/lukas/.ghcup/env" ] && . "/home/lukas/.ghcup/env" # ghcup-env

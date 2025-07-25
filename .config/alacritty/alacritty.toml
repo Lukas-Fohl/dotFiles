@@ -1,6 +1,5 @@
 [window]
-
-opacity = 1.0
+opacity = 0.975
 
 padding.x = 10
 padding.y = 10
@@ -9,10 +8,14 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Dark"
 
 [font]
-size = 13.0
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+size = 14.0
 
 [general]
 import = [
     "~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"
+    #"~/.config/alacritty/themes/themes/rose_pine.toml"
 ]
 
