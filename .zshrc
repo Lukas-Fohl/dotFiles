@@ -103,6 +103,11 @@ essen(){
     curl -s https://www.stwhh.de/gastronomie/mensen-cafes-weiteres/mensa/mensa-harburg | awk '/h5/{getline; gsub(/^[ \t]+|<\/div>/, ""); printf "%s \n", $0} END {print ""}'
 }
 
+gito(){
+    url=$(git remote get-url origin)
+    (open $url&) || echo "no url :("
+}
+
 alias csPrice="python3 $HOME/code/csprice/main.py"
 alias csPlot="python3 $HOME/code/csprice/plot.py"
 alias zshconfig="nvim ~/.zshrc"
@@ -124,7 +129,7 @@ alias v="nvim"
 alias hdmiOff="xrandr --output HDMI-1 --off"
 alias hdmiTop="xrandr --output HDMI-1 --auto --above eDP-1"
 alias hdmiRight="xrandr --output HDMI-1 --auto --right-of eDP-1"
-alias hdmiSame="xrandr --output HDMI-1 --same-as eDP-1"
+alias hdmiSame="xrandr --output HDMI-1 --auto --same-as eDP-1"
 
 pwdc() {
     echo $(pwd) > $HOME/.copied_path
@@ -157,22 +162,22 @@ if [[ -z "$TMUX" ]] && [ "$TERM" != "linux" ]; then
 fi
 
 sess(){
-    session=$(tmux list-sessions -F '#S' 2>/dev/null | fzf)
+    session=$(tmux list-sessions -F '#S' 2>/dev/null | fzf --print-query)
+    new_name=$(sed -e '1{/^$/d}' -e '${/^$/d}' <<< "$session")
 
-    if [ -n "$session" ]; then
-      if [ -n "$TMUX" ]; then
-        tmux switch-client -t "$session"
-      else
-        tmux attach-session -t "$session"
-      fi
+    if tmux has-session -t "$new_name" 2>/dev/null; then
+        if [ -n "$TMUX" ]; then
+            tmux switch-client -t "$new_name"
+        else
+            tmux attach-session -t "$new_name"
+        fi
     else
-      new_name="new_$(date +%s)"
-      if [ -n "$TMUX" ]; then
-        tmux new-session -d -s "$new_name"
-        tmux switch-client -t "$new_name"
-      else
-        tmux new-session -s "$new_name"
-      fi
+        if [ -n "$TMUX" ]; then
+            tmux new-session -d -s "$new_name"
+            tmux switch-client -t "$new_name"
+        else
+            tmux new-session -s "$new_name"
+        fi
     fi
 }
 

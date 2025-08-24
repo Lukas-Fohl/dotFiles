@@ -194,13 +194,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#gaps inner 15px
-#gaps outer 5px
+gaps inner 15px
+#gaps outer 25px
 #exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/gruv.png
 #exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/haskell.jpg
 #exec_always --no-startup-id feh --bg-tile /home/lukas/Bilder/elon.jpeg
-exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/portal.png
-#exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/portal.png
+exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/kurz.png
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #3c3c3c #285566 #ffffff #3c3c3c   #3c3c3c
