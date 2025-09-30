@@ -111,7 +111,7 @@ gito(){
 alias csPrice="python3 $HOME/code/csprice/main.py"
 alias csPlot="python3 $HOME/code/csprice/plot.py"
 alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 alias sudo='nocorrect sudo '
 alias dokcer="docker"

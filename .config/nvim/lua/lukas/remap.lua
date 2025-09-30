@@ -14,5 +14,7 @@ vim.keymap.set("n", "<leader>f", "a{<esc>")
 vim.keymap.set("n", "<leader>g", "a[<esc>")
 vim.keymap.set("n", "<leader>h", "a]<esc>")
 
+vim.keymap.set("i", "(", "()<left>")
+
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader><leader>", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true })
