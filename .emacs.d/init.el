@@ -33,9 +33,7 @@
 (require 'use-package)
 (setq use-package-always-ensure t) ;; auto-install packages
 
-;; ------------------------
 ;; basic UI niceties (keep it plain)
-;; ------------------------
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -44,14 +42,13 @@
 
 (setq evil-want-keybinding nil)
 
-;; ------------------------
 ;; Evil (vim emulation)
-;; ------------------------
-;; allow C-u to scroll (vimmer-friendly)
+;; allow C-u to scroll
+(setq evil-undo-system 'undo-redo)
 (setq evil-want-C-u-scroll t)
 (use-package evil
   :init
-  (setq evil-want-integration t) ;; if you want Emacs integration
+  (setq evil-want-integration t)
   :config
   (evil-mode 1))
 
@@ -74,41 +71,24 @@
 (setq-default indent-tabs-mode nil) ;; use spaces
 (setq tab-width 4)
 
-;; ------------------------
 ;; basic key tweaks (example)
-;; ------------------------
-;; keep C-s for save in insert-normal etc.
-(define-key evil-normal-state-map (kbd "SPC") nil) ;; free SPC for your keymap if you want
+(define-key evil-normal-state-map (kbd "SPC") nil) ;; free SPC for keymap
 ;; Example: make jk exit insert mode quickly
 ; (with-eval-after-load 'evil
 ;   (define-key evil-insert-state-map (kbd "j k") 'evil-normal-state))
 
-;; ------------------------
-;; Optional: package auto-upgrades (uncomment if desired)
-;; ------------------------
+;; package auto-upgrades
 ;; (use-package auto-package-update
 ;;   :config
 ;;   (setq auto-package-update-interval 7) ; weekly
 ;;   (auto-package-update-maybe))
 
-;; ------------------------
-;; final message
-;; ------------------------
-(message "Plain Evil config loaded.")
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
+   '(company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  )
 
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
@@ -144,4 +124,28 @@
 (use-package swiper
   :after ivy
   :bind (("C-s" . swiper))) ;; better search
+
+
+;; Go major mode
+(use-package go-mode
+  :mode "\\.go\\'")
+
+;; LSP
+(use-package eglot
+  :hook ((go-mode c-mode c++-mode) . eglot-ensure)
+  :config
+  ;; Tell eglot which servers to use
+  (add-to-list 'eglot-server-programs
+               '(go-mode . ("gopls")))
+  (add-to-list 'eglot-server-programs
+               '((c-mode c++-mode) . ("clangd"))))
+
+;; Completion
+(use-package company
+  :hook (after-init . global-company-mode))
+
+;; path stuff
+(use-package exec-path-from-shell
+  :init
+  (exec-path-from-shell-initialize))
 
