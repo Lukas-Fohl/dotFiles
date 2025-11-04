@@ -11,8 +11,8 @@
 (set-face-attribute 'default nil :height 250) ;; ~25pt
 
 ;; transparent
-; (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
-; (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+(set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
 
 ;; ------------------------
 ;; package / use-package bootstrap
@@ -85,10 +85,19 @@
 
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
+ '(org-agenda-files '("/home/lukas/studi/sem3/readme.org"))
  '(package-selected-packages
-   '(company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
+   '(ob-go company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
@@ -149,3 +158,17 @@
   :init
   (exec-path-from-shell-initialize))
 
+(use-package ob-go
+  :ensure t
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((go . t)))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t))))
+
+(setq org-babel-default-header-args:python
+      '((:results . "output")))
+
+(global-set-key (kbd "C-a") 'org-agenda)
