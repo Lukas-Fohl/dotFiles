@@ -1,5 +1,9 @@
+;; Enable server mode (daemon) for this Emacs session
+(server-start)
+
 ;; enable relative numbers
 (setq display-line-numbers-type 'relative)
+; (global-display-line-numbers-mode +1)
 
 ;; enable line numbers
 (global-display-line-numbers-mode t)
@@ -11,8 +15,8 @@
 (set-face-attribute 'default nil :height 250) ;; ~25pt
 
 ;; transparent
-(set-frame-parameter (selected-frame) 'alpha '(90 . 90))
-(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+; (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+; (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
 
 ;; ------------------------
 ;; package / use-package bootstrap
@@ -89,10 +93,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("75b371fce3c9e6b1482ba10c883e2fb813f2cc1c88be0b8a1099773eb78a7176" "18a1d83b4e16993189749494d75e6adb0e15452c80c431aca4a867bcc8890ca9" default))
  '(helm-minibuffer-history-key "M-p")
  '(org-agenda-files '("/home/lukas/studi/sem3/readme.org"))
  '(package-selected-packages
-   '(ob-go company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
+   '(gruvbox-theme org-fragtog ob-go company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -158,6 +164,7 @@
   :init
   (exec-path-from-shell-initialize))
 
+;; execute code blocks in org-mode
 (use-package ob-go
   :ensure t
   :config
@@ -166,9 +173,26 @@
    '((go . t)))
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((python . t))))
+   '((python . t)))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((shell . t))))
 
 (setq org-babel-default-header-args:python
-      '((:results . "output")))
+      '((:results . "output"))) ;print output when exec python
 
 (global-set-key (kbd "C-a") 'org-agenda)
+
+(global-set-key (kbd "C-c l") 'org-latex-preview) ;cool new short-cut
+
+(setq org-format-latex-options
+      (plist-put org-format-latex-options :scale 2.5)) ;bigger latex preview
+
+(setq org-startup-with-latex-preview t) ;latex preview as default
+
+(use-package org-fragtog ;latex text on hover
+  :hook (org-mode . org-fragtog-mode))
+
+(use-package gruvbox-theme
+  :config
+  (load-theme 'gruvbox-light-medium t))

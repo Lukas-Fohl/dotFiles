@@ -74,9 +74,10 @@ bindsym $mod+l exec i3lock
 bindsym $mod+odiaeresis focus right
 
 #other
-bindsym $mod+Shift+f exec firefox 'https://spinning.fish'
-bindsym $mod+Shift+m exec ~/code/mouse/main
-bindsym $mod+Shift+Escape exec /snap/bin/mission-center
+# bindsym $mod+Shift+f exec firefox 'https://spinning.fish'
+# bindsym $mod+Shift+m exec ~/code/mouse/main
+# bindsym $mod+Shift+Escape exec /snap/bin/mission-center
+bindsym $mod+Shift+f exec emacsclient -c $HOME/studi
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -194,13 +195,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-gaps inner 15px
+gaps inner 10px
 #gaps outer 25px
 #exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/gruv.png
 #exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/haskell.jpg
 #exec_always --no-startup-id feh --bg-tile /home/lukas/Bilder/elon.jpeg
 #exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/portal.png
-exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/kurz.png
+#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/kurz.png
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # class                 border  backgr. text    indicator child_border
