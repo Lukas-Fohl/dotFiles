@@ -75,7 +75,7 @@ bindsym $mod+odiaeresis focus right
 
 #other
 # bindsym $mod+Shift+f exec firefox 'https://spinning.fish'
-# bindsym $mod+Shift+m exec ~/code/mouse/main
+bindsym $mod+Shift+m exec ~/code/mouse/main
 # bindsym $mod+Shift+Escape exec /snap/bin/mission-center
 bindsym $mod+Shift+f exec emacsclient -c $HOME/studi
 
@@ -197,17 +197,13 @@ bindsym $mod+r mode "resize"
 
 gaps inner 10px
 #gaps outer 25px
-#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/gruv.png
-#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/haskell.jpg
-#exec_always --no-startup-id feh --bg-tile /home/lukas/Bilder/elon.jpeg
-#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/portal.png
-#exec_always --no-startup-id feh --bg-scale /home/lukas/Bilder/kurz.png
+exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper/river.jpg
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #3c3c3c #285566 #ffffff #3c3c3c   #3c3c3c
-client.focused_inactive #3c3c3c #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #3c3c3c #222222 #888888 #292d2e   #3c3c3c
+client.focused          #81996E #81996E #ffffff #81996E   #81996E
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
@@ -217,6 +213,8 @@ bar {
         colors {
             background #000000
             statusline #ffffff
+            focused_workspace  #4c7899 #81996E #ffffff
+            active_workspace   #333333 #5f676a #ffffff
         }
 }
 

@@ -8,15 +8,12 @@
 ;; enable line numbers
 (global-display-line-numbers-mode t)
 
-;; load built-in dark theme
-(load-theme 'wombat t)
-
 ;; font
 (set-face-attribute 'default nil :height 250) ;; ~25pt
 
 ;; transparent
-; (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
-; (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+(set-frame-parameter (selected-frame) 'alpha '(80 . 80))
+(add-to-list 'default-frame-alist '(alpha . (80 . 80)))
 
 ;; ------------------------
 ;; package / use-package bootstrap
@@ -94,11 +91,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("75b371fce3c9e6b1482ba10c883e2fb813f2cc1c88be0b8a1099773eb78a7176" "18a1d83b4e16993189749494d75e6adb0e15452c80c431aca4a867bcc8890ca9" default))
+   '("377bf88f6a5c5085bccdd96beeade170a55df7944e9768f1108ada15d4e71e02" "8363207a952efb78e917230f5a4d3326b2916c63237c1f61d7e5fe07def8d378" "51fa6edfd6c8a4defc2681e4c438caf24908854c12ea12a1fbfd4d055a9647a3" "5a0ddbd75929d24f5ef34944d78789c6c3421aa943c15218bac791c199fc897d" "75b371fce3c9e6b1482ba10c883e2fb813f2cc1c88be0b8a1099773eb78a7176" "18a1d83b4e16993189749494d75e6adb0e15452c80c431aca4a867bcc8890ca9" default))
  '(helm-minibuffer-history-key "M-p")
  '(org-agenda-files '("/home/lukas/studi/sem3/readme.org"))
  '(package-selected-packages
-   '(gruvbox-theme org-fragtog ob-go company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
+   '(autumn-light-theme gruvbox-theme org-fragtog ob-go company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -176,9 +173,15 @@
    '((python . t)))
   (org-babel-do-load-languages
    'org-babel-load-languages
+   '((C . t)))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
    '((shell . t))))
 
 (setq org-babel-default-header-args:python
+      '((:results . "output"))) ;print output when exec python
+
+(setq org-babel-default-header-args:C
       '((:results . "output"))) ;print output when exec python
 
 (global-set-key (kbd "C-a") 'org-agenda)
@@ -195,4 +198,4 @@
 
 (use-package gruvbox-theme
   :config
-  (load-theme 'gruvbox-light-medium t))
+  (load-theme 'gruvbox-dark-medium t))
