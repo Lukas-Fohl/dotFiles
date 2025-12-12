@@ -47,11 +47,11 @@ return {
     --map("n", "<C-h>", function() harpoon:list():prev() end, "Harpoon prev File")
     --map("n", "<leader>c", function() harpoon:list():clear() end, "Harpoon clear list")
 
-    map("n", "<leader>q", function() harpoon:list():select(1) end)
-    map("n", "<leader>w", function() harpoon:list():select(2) end)
-    map("n", "<leader>e", function() harpoon:list():select(3) end)
-    map("n", "<leader>r", function() harpoon:list():select(4) end)
-    map("n", "<leader>t", function() harpoon:list():select(5) end)
+    map("n", "<leader>1", function() harpoon:list():select(1) end)
+    map("n", "<leader>2", function() harpoon:list():select(2) end)
+    map("n", "<leader>3", function() harpoon:list():select(3) end)
+    map("n", "<leader>4", function() harpoon:list():select(4) end)
+    map("n", "<leader>5", function() harpoon:list():select(5) end)
   end,
 }
 

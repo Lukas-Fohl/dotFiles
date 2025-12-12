@@ -9,6 +9,10 @@ return {
       -- Enable clangd
       lspconfig.clangd.setup({
         capabilities = capabilities,
+        cmd = { 
+            "clangd",
+            "--fallback-style=webkit"
+        },
       })
 
       -- Enable pyright

@@ -213,7 +213,7 @@ bar {
         colors {
             background #000000
             statusline #ffffff
-            focused_workspace  #4c7899 #81996E #ffffff
+            focused_workspace  #81996E #81996E #ffffff
             active_workspace   #333333 #5f676a #ffffff
         }
 }
@@ -221,6 +221,7 @@ bar {
 exec --no-startup-id xmodmap -e "clear Lock" -e "keycode 66 = Escape Caps_Lock Escape"
 
 exec --no-startup-id i3-msg "workspace 1:Term; exec /home/lukas/.cargo/bin/alacritty"
-#exec --no-startup-id i3-msg "workspace 3:Web; exec /usr/bin/firefox"
+exec --no-startup-id i3-msg "workspace 3:Web; exec /usr/bin/firefox"
+exec --no-startup-id i3-msg "workspace 4:Org; exec emacsclient -c $HOME/studi/"
 #exec --no-startup-id i3-msg 'workspace 2:Code; exec /home/lukas/.cargo/bin/alacritty'
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets

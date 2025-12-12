@@ -95,7 +95,7 @@
  '(helm-minibuffer-history-key "M-p")
  '(org-agenda-files '("/home/lukas/studi/sem3/readme.org"))
  '(package-selected-packages
-   '(autumn-light-theme gruvbox-theme org-fragtog ob-go company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
+   '(org-bullets org-modern autumn-light-theme gruvbox-theme org-fragtog ob-go company-box company lsp-ui lsp-mode go-mode helm counsel ivy consult orderless vertico corfu evil-commentary evil-surround evil-collection evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -136,7 +136,6 @@
 (use-package swiper
   :after ivy
   :bind (("C-s" . swiper))) ;; better search
-
 
 ;; Go major mode
 (use-package go-mode
@@ -199,3 +198,9 @@
 (use-package gruvbox-theme
   :config
   (load-theme 'gruvbox-dark-medium t))
+
+(blink-cursor-mode -1)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
