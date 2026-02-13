@@ -204,3 +204,10 @@
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+(evil-define-key 'motion doc-view-mode-map
+  (kbd "j") 'doc-view-next-line-or-next-page
+  (kbd "k") 'doc-view-previous-line-or-previous-page
+  (kbd "gj") 'doc-view-next-page
+  (kbd "gk") 'doc-view-previous-page
+  (kbd "G") 'doc-view-last-page
+  (kbd "gg") 'doc-view-first-page)

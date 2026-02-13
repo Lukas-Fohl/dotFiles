@@ -5,12 +5,13 @@
   "gruvbox.nvim": { "branch": "main", "commit": "58a2cda2e953a99e2f87c12b7fb4602da4e0709c" },
   "harpoon": { "branch": "harpoon2", "commit": "ed1f853847ffd04b2b61c314865665e1dadf22c7" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
-  "markview.nvim": { "branch": "main", "commit": "ec33f2aa333ca1d76f51847922578434d7aeadf7" },
   "nvim-cmp": { "branch": "main", "commit": "b5311ab3ed9c846b585c0c15b7559be131ec4be9" },
   "nvim-lspconfig": { "branch": "master", "commit": "6bba673aa8993eceec233be17b42ddfb9540794b" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
+  "smart-paste.nvim": { "branch": "main", "commit": "b26247e87d278936ec46c056e29a709bb5c0d6f0" },
   "symbols.nvim": { "branch": "main", "commit": "62cd4236b3eeabf3b970f225b1cc3379e11dc99c" },
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
+  "typst-preview.nvim": { "branch": "master", "commit": "e123a7ab64e52d836e00dea9251e85b201f38966" },
   "wobble.nvim": { "branch": "master", "commit": "b2021a7aa6261d3ead0b070bee48c227d242e75b" }
 }
