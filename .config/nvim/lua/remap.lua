@@ -13,7 +13,7 @@ vim.keymap.set("n", "<leader>f", "a{<esc>")
 vim.keymap.set("n", "<leader>g", "a[<esc>")
 vim.keymap.set("n", "<leader>h", "a]<esc>")
 
-vim.keymap.set('n', '<leader>c', ':!typst compile %<CR>', { silent = true, desc = 'Compile Typst file' })
+vim.keymap.set('n', '<leader>c', ':make<CR>', { silent = true, desc = 'Run makeprg' })
 
 -- vim.keymap.set("i", "(", "()<left>")
 vim.keymap.set("i", "\"", "\"\"<left>")

@@ -108,6 +108,9 @@ gito(){
     (open $url&) || echo "no url :("
 }
 
+alias tt="find . -name '*.typ' | fzf --print-query | xargs nvim"
+alias pp="find . -name '*.pdf' | fzf | xargs -I {} sh -c 'open \"{}\" &'"
+
 alias csPrice="python3 $HOME/code/csprice/main.py"
 alias csPlot="python3 $HOME/code/csprice/plot.py"
 alias zshconfig="nvim ~/.zshrc"

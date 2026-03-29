@@ -6,6 +6,8 @@ require("lukas.remap")
 
 require("lukas.set")
 
+require("lukas.make")
+
 vim.diagnostic.config({
   virtual_text = false, -- disable inline "E"
   signs = true,
