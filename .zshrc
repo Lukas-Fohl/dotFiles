@@ -111,8 +111,8 @@ gito(){
 alias tt="find . -name '*.typ' | fzf --print-query | xargs nvim"
 alias pp="find . -name '*.pdf' | fzf | xargs -I {} sh -c 'open \"{}\" &'"
 
-alias csPrice="python3 $HOME/code/csprice/main.py"
-alias csPlot="python3 $HOME/code/csprice/plot.py"
+# alias csPrice="python3 $HOME/code/csprice/main.py"
+# alias csPlot="python3 $HOME/code/csprice/plot.py"
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 
@@ -146,7 +146,7 @@ cdc() {
   cd $(cat $HOME/.copied_path) || return 1
 }
 
-csPrice&
+# csPrice&
 
 #ALACRITTY VIM
 export KEYTIMEOUT=1
@@ -164,24 +164,8 @@ if [[ -z "$TMUX" ]] && [ "$TERM" != "linux" ]; then
   tmux attach || tmux
 fi
 
-sess(){
-    session=$(tmux list-sessions -F '#S' 2>/dev/null | fzf --print-query)
-    new_name=$(sed -e '1{/^$/d}' -e '${/^$/d}' <<< "$session")
-
-    if tmux has-session -t "$new_name" 2>/dev/null; then
-        if [ -n "$TMUX" ]; then
-            tmux switch-client -t "$new_name"
-        else
-            tmux attach-session -t "$new_name"
-        fi
-    else
-        if [ -n "$TMUX" ]; then
-            tmux new-session -d -s "$new_name"
-            tmux switch-client -t "$new_name"
-        else
-            tmux new-session -s "$new_name"
-        fi
-    fi
+sess() {
+    "$HOME/.sess" "$@"
 }
 
 [ -f "/home/lukas/.ghcup/env" ] && . "/home/lukas/.ghcup/env" # ghcup-env

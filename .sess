@@ -1,0 +1,37 @@
+#!/usr/bin/env zsh
+
+setopt local_options null_glob
+
+local choice dir name
+local -a sess_roots existing_roots
+
+sess_roots=(~/code ~/notes ~/studi/sem4)
+existing_roots=(${^sess_roots}(N))
+
+choice="$(
+    {
+        tmux list-sessions -F 'session:#S' 2>/dev/null
+        [ ${#existing_roots[@]} -gt 0 ] && find ${existing_roots[@]} -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sed 's#^#dir:#'
+    } | fzf --prompt='session/project > ' --height=40%
+)" || exit 0
+
+case "$choice" in
+    session:*)
+        name="${choice#session:}"
+        if [ -n "$TMUX" ]; then
+            tmux switch-client -t "$name"
+        else
+            tmux attach-session -t "$name"
+        fi
+        ;;
+    dir:*)
+        dir="${choice#dir:}"
+        name="$(basename "$dir" | tr '. ' '__')"
+        if [ -n "$TMUX" ]; then
+            tmux new-session -Ad -s "$name" -c "$dir"
+            tmux switch-client -t "$name"
+        else
+            tmux new-session -A -s "$name" -c "$dir"
+        fi
+        ;;
+esac

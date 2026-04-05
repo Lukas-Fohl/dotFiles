@@ -67,7 +67,16 @@ require("wobble").setup({
 })
 vim.keymap.set("n", "<leader>w", "<cmd>Wobble<CR>")
 
--- Symbols --
+-- Outline --
+-- vim.pack.add{{src="https://github.com/hedyhli/outline.nvim"}}
+-- require("outline").setup({
+--   outline_window = {
+--     position='left'
+--   }
+-- })
+-- vim.keymap.set("n", "<leader>s", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+
+-- Symbols
 vim.pack.add{{src="https://github.com/oskarrrrrrr/symbols.nvim"}}
 
 local r = require("symbols.recipes")
@@ -125,7 +134,10 @@ require("nvim-treesitter").setup({
 
 
 -- Harpoon --
-vim.pack.add{{src = "https://github.com/ThePrimeagen/harpoon"}}
+vim.pack.add{{
+    src = "https://github.com/ThePrimeagen/harpoon",
+    version = 'harpoon2',
+}}
 
 local harpoon = require("harpoon")
 
@@ -168,4 +180,28 @@ map("n", "<leader>5", function() harpoon:list():select(5) end)
 
 -- Gruvbox --
 vim.pack.add{{src = "https://github.com/ellisonleao/gruvbox.nvim"}}
+require("gruvbox").setup({
+  terminal_colors = true,
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = {
+    strings = true,
+    emphasis = true,
+    comments = true,
+    operators = false,
+    folds = true,
+  },
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true,
+  contrast = "",
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = true,
+})
 vim.cmd("colorscheme gruvbox")
