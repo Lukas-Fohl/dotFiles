@@ -2,6 +2,7 @@ vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.colorcolumn = "80"
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -28,3 +29,5 @@ vim.opt.updatetime = 50
 
 vim.o.list = true
 vim.o.listchars = 'tab:» ,lead:·,trail:·'
+
+vim.o.spelllang = 'de_de'

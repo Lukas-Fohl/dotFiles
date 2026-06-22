@@ -20,6 +20,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+    pattern = "lisp",
+    callback = function()
+        vim.opt_local.makeprg = "sbcl --script %"
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
     pattern = "c",
     callback = function()
         vim.opt_local.makeprg = "gcc % -Wall -Wextra -pedantic ; ./a.out"

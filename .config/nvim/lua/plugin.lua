@@ -42,9 +42,24 @@ vim.lsp.config('gopls', {
   },
 })
 
+vim.lsp.config('rust_analyzer', {
+  capabilities = capabilities,
+  settings = {
+    ['rust-analyzer'] = {
+      cargo = {
+        allFeatures = true,
+      },
+      check = {
+        command = 'clippy',
+      },
+    },
+  },
+})
+
 vim.lsp.enable('clangd')
 vim.lsp.enable('pyright')
 vim.lsp.enable('gopls')
+vim.lsp.enable('rust_analyzer')
 
 -- Typst --
 vim.pack.add{{src = "https://github.com/chomosuke/typst-preview.nvim"}}
@@ -52,6 +67,8 @@ vim.pack.add{{src = "https://github.com/chomosuke/typst-preview.nvim"}}
 require('typst-preview').setup({
     lazy = false,
     version = '1.*',
+    debug = true,
+    invert_colors = 'never',
     opts = {},
 })
 
@@ -127,7 +144,7 @@ require("nvim-treesitter").setup({
   ensure_installed = {
     "bash", "go", "gomod", "gosum", "html", "javascript",
     "json", "lua", "markdown", "markdown_inline", "python",
-    "query", "regex", "tsx", "typescript", "vim", "yaml",
+    "query", "regex", "rust", "tsx", "typescript", "vim", "yaml",
   },
   highlight = { enable = true }, -- usually desired if moving from lazy
 })
@@ -180,8 +197,9 @@ map("n", "<leader>5", function() harpoon:list():select(5) end)
 
 -- Gruvbox --
 vim.pack.add{{src = "https://github.com/ellisonleao/gruvbox.nvim"}}
+-- Default options:
 require("gruvbox").setup({
-  terminal_colors = true,
+  terminal_colors = false, -- add neovim terminal colors
   undercurl = true,
   underline = true,
   bold = true,
@@ -196,12 +214,13 @@ require("gruvbox").setup({
   invert_selection = false,
   invert_signs = false,
   invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true,
-  contrast = "",
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,
   transparent_mode = true,
 })
+-- vim.o.background = "light"
+vim.o.background = "dark"
 vim.cmd("colorscheme gruvbox")
