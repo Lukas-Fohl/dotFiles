@@ -31,6 +31,10 @@ vim.lsp.config('pyright', {
   capabilities = capabilities,
 })
 
+vim.lsp.config('ts_ls', {
+  capabilities = capabilities,
+})
+
 vim.lsp.config('gopls', {
   cmd = { "gopls" },
   capabilities = capabilities,
@@ -58,6 +62,7 @@ vim.lsp.config('rust_analyzer', {
 
 vim.lsp.enable('clangd')
 vim.lsp.enable('pyright')
+vim.lsp.enable('ts_ls')
 vim.lsp.enable('gopls')
 vim.lsp.enable('rust_analyzer')
 
@@ -111,8 +116,12 @@ require("symbols").setup(
 vim.keymap.set("n", "<leader>s", "<cmd>Symbols<CR>")
 vim.keymap.set("n", "<leader>S", "<cmd>SymbolsClose<CR>")
 
+vim.pack.add{{src="https://github.com/nvim-tree/nvim-web-devicons"}}
 vim.pack.add{{src="https://github.com/nvim-lua/plenary.nvim"}}
+vim.pack.add{{src="https://github.com/lewis6991/gitsigns.nvim"}}
+vim.pack.add{{src="https://github.com/stevearc/oil.nvim"}}
 vim.pack.add{{src="https://github.com/nvim-telescope/telescope.nvim"}}
+vim.pack.add{{src="https://github.com/sindrets/diffview.nvim"}}
 
 require("telescope").setup({
   defaults = {
@@ -136,6 +145,38 @@ vim.keymap.set("n", "<C-l>", function()
     additional_args = function() return { "--hidden" } end,
   })
 end, { desc = "Find Plugin Grep" })
+
+require("gitsigns").setup({
+  current_line_blame = true,
+})
+
+require("oil").setup({
+  default_file_explorer = true,
+  skip_confirm_for_simple_edits = true,
+  view_options = {
+    show_hidden = true,
+  },
+})
+
+vim.keymap.set("n", "]h", function()
+  require("gitsigns").nav_hunk("next")
+end, { desc = "Next hunk" })
+vim.keymap.set("n", "[h", function()
+  require("gitsigns").nav_hunk("prev")
+end, { desc = "Previous hunk" })
+vim.keymap.set("n", "<leader>hp", function()
+  require("gitsigns").preview_hunk()
+end, { desc = "Preview hunk" })
+vim.keymap.set("n", "<leader>hb", function()
+  require("gitsigns").toggle_current_line_blame()
+end, { desc = "Toggle line blame" })
+vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+
+require("diffview").setup({})
+
+vim.keymap.set("n", "<leader>dv", "<cmd>DiffviewOpen<CR>", { desc = "Open diff view" })
+vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory %<CR>", { desc = "File history" })
+vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { desc = "Close diff view" })
 
 -- Treesitter --
 vim.pack.add{{src = "https://github.com/nvim-treesitter/nvim-treesitter"}}

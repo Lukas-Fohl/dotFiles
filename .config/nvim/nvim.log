@@ -1,0 +1,21 @@
+WRN 2026-06-22T20:21:14.998 ?.2        server_start:197: Failed to start server: operation not permitted: /run/user/1000/nvim.2.0
+INF 2026-06-22T20:21:14.998 ?.2        set_init_2:607: startup runtimepath/packpath value: /home/lukas/.config/nvim,/etc/xdg/nvim,/home/lukas/.local/share/nvim/site,/home/lukas/.local/share/flatpak/exports/share/nvim/site,/var/lib/flatpak/exports/share/nvim/site,/usr/local/share/nvim/site,/usr/share/nvim/site,/var/lib/snapd/desktop/nvim/site,/usr/local/share/nvim/runtime,/usr/local/lib/nvim,/var/lib/snapd/desktop/nvim/site/after,/usr/share/nvim/site/after,/usr/local/share/nvim/site/after,/var/lib/flatpak/exports/share/nvim/site/after,/home/lukas/.local/share/flatpak/exports/share/nvim/site/after,/home/lukas/.local/share/nvim/site/after,/etc/xdg/nvim/after,/home/lukas/.config/nvim/after
+INF 2026-06-22T20:21:15.036 ?.2        emsg_multiline:852: E5113: Lua chunk: .../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:220: Can't open record file!: /home/lukas/.local/share/nvim/typst-preview/version_record.txt: Read-only file system
+stack traceback:
+	[C]: in function 'error'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:220: in function 'callback_'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:231: in function 'download_bins'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:239: in function 'callback'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:123: in function 'download_bin'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:235: in function 'download_bins'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:239: in function 'callback'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:123: in function 'download_bin'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:235: in function 'download_bins'
+	.../core/opt/typst-preview.nvim/lua/typst-preview/fetch.lua:243: in function 'fetch'
+	...k/core/opt/typst-preview.nvim/lua/typst-preview/init.lua:8: in function 'setup'
+	/home/lukas/.config/nvim/lua/plugin.lua:67: in main chunk
+	[C]: in function 'require'
+	/home/lukas/.config/nvim/init.lua:3: in main chunk
+INF 2026-06-22T20:21:15.079 ?.2        emsg_multiline:852: Failed to open LSP client log file: /home/lukas/.local/state/nvim/lsp.log: Read-only file system
+INF 2026-06-22T20:21:15.080 ?.2        emsg_multiline:852: E886: System error while opening temporary ShaDa file /home/lukas/.local/state/nvim/shada/main.shada.tmp.a for writing: read-only file system
+INF 2026-06-22T20:21:15.080 ?.2        os_exit:739: Nvim exit: 0
