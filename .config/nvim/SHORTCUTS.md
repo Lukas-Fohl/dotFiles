@@ -42,8 +42,8 @@ Leader key: `Space`
 | --- | --- | --- |
 | `]h` | Normal | Next Git hunk |
 | `[h` | Normal | Previous Git hunk |
-| `<leader>hp` | Normal | Preview Git hunk |
-| `<leader>hb` | Normal | Toggle current line blame |
+| `<leader>np` | Normal | Preview Git hunk |
+| `<leader>nb` | Normal | Toggle current line blame |
 | `<leader>dv` | Normal | Open Diffview |
 | `<leader>dh` | Normal | Show file history in Diffview |
 | `<leader>dc` | Normal | Close Diffview |
