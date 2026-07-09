@@ -66,15 +66,15 @@ Leader key: `Space`
 | `<leader>S` | Normal | Close Symbols sidebar |
 | `<leader>w` | Normal | Run Wobble |
 
-## Harpoon
+## Hook
 
 | Shortcut | Mode | Action |
 | --- | --- | --- |
-| `<leader>a` | Normal | Add current file to Harpoon |
-| `<leader>d` | Normal | Remove current file from Harpoon |
-| `<leader>m` | Normal | Toggle Harpoon menu |
-| `<leader>1` | Normal | Jump to Harpoon file 1 |
-| `<leader>2` | Normal | Jump to Harpoon file 2 |
-| `<leader>3` | Normal | Jump to Harpoon file 3 |
-| `<leader>4` | Normal | Jump to Harpoon file 4 |
-| `<leader>5` | Normal | Jump to Harpoon file 5 |
+| `<leader>a` | Normal | Add current buffer to Hook |
+| `<leader>d` | Normal | Remove current buffer from Hook |
+| `<leader>m` | Normal | Toggle Hook menu |
+| `<leader>1` | Normal | Jump to Hook buffer 1 |
+| `<leader>2` | Normal | Jump to Hook buffer 2 |
+| `<leader>3` | Normal | Jump to Hook buffer 3 |
+| `<leader>4` | Normal | Jump to Hook buffer 4 |
+| `<leader>5` | Normal | Jump to Hook buffer 5 |
