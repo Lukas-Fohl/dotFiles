@@ -24,6 +24,11 @@
       "rev": "334d5fd49fc8033f26408425366c66c6390c57bb",
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
+    "harpoon": {
+      "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
+      "src": "https://github.com/ThePrimeagen/harpoon",
+      "version": "'harpoon2'"
+    },
     "hook.nvim": {
       "rev": "5b3bc9b609887ad3970d82a3796387addce5cf22",
       "src": "https://github.com/zakissimo/hook.nvim"

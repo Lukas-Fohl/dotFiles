@@ -190,94 +190,51 @@ require("nvim-treesitter").setup({
   highlight = { enable = true }, -- usually desired if moving from lazy
 })
 
-
--- Hook --
+-- Harpoon --
 vim.pack.add{{
-    src = "https://github.com/zakissimo/hook.nvim",
+    src = "https://github.com/ThePrimeagen/harpoon",
+    version = 'harpoon2',
 }}
 
-local hook = require("hook")
-local hook_config = {
-    width = 50,
-    height = 12,
-}
-hook.setup({
-    width = hook_config.width,
-    height = hook_config.height,
+local harpoon = require("harpoon")
+
+harpoon:setup({
+  settings = {
+    save_on_toggle = true,
+    sync_on_ui_close = true,
+    -- key = function()
+    --   return vim.loop.cwd()
+    -- end,
+  },
 })
-
-hook._open = function()
-    hook._switch = true
-    local bufnr = vim.api.nvim_get_current_buf()
-    local winid = vim.fn.win_getid(vim.fn.bufwinnr(bufnr))
-    local wintype = vim.fn.win_gettype(winid)
-
-    if wintype == "popup" then
-        print("Please close the current popup window before opening Hook.")
-        return
-    end
-
-    local affix = require("hook.affix")
-    local max_len, win_names = affix.add(hook.bnames, hook.default.prefix, hook.bmap, hook.default.suffix)
-
-    if max_len > 0 then
-        local width = math.max(hook_config.width, max_len)
-        vim.api.nvim_buf_set_lines(hook.bufnr, 0, -1, false, win_names)
-        hook.winid = vim.api.nvim_open_win(hook.bufnr, true, {
-            title = { { hook.default.name, "HookHl" } },
-            title_pos = "center",
-            relative = "editor",
-            width = width,
-            height = hook_config.height,
-            row = math.floor(((vim.o.lines - hook_config.height) / 2) - 1),
-            col = math.floor((vim.o.columns - width) / 2),
-            style = "minimal",
-            border = {
-                { "╭", "HookHl" },
-                { "─", "HookHl" },
-                { "╮", "HookHl" },
-                { "│", "HookHl" },
-                { "╯", "HookHl" },
-                { "─", "HookHl" },
-                { "╰", "HookHl" },
-                { "│", "HookHl" },
-            },
-        })
-        vim.api.nvim_win_set_cursor(hook.winid, { 1, 1 })
-    end
-end
-
 local map = function(mode, lhs, rhs, desc)
   vim.keymap.set(mode, lhs, rhs, { desc = desc, noremap = true, silent = true })
 end
 
-map("n", "<leader>r", function()
-    local current_buf = vim.api.nvim_get_current_buf()
+map("n", "<leader>d", function()
+    local list = harpoon:list()
+    local current_path = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
 
-    for name, bufnr in pairs(hook.bmap) do
-        if bufnr == current_buf then
-            hook.bmap[name] = nil
-            for i, hook_name in ipairs(hook.bnames) do
-                if hook_name == name then
-                    table.remove(hook.bnames, i)
-                    break
-                end
-            end
-            vim.notify("Removed from Hook: " .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(current_buf), ":."))
+    for i, item in ipairs(list.items) do
+        if item.value == current_path then
+            list:remove(item)
+            vim.notify("Removed " .. tostring(i) .. " from Harpoon: " .. current_path)
             return
         end
     end
-    vim.notify("Current buffer not in Hook list")
-end, "Remove current buffer from Hook")
+    vim.notify("Current file not in Harpoon list")
+end, "Remove current file from Harpoon")
 
-map("n", "<leader>a", function() hook.add_buf() end, "Hook Add Buffer")
-map("n", "<leader>m", function() hook.toggle() end, "Hook Menu")
+map("n", "<leader>a", function() harpoon:list():add() end, "Harpoon Add File")
+map("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Harpoon Menu")
 
-map("n", "<leader>1", function() hook.pull(1) end, "Hook buffer 1")
-map("n", "<leader>2", function() hook.pull(2) end, "Hook buffer 2")
-map("n", "<leader>3", function() hook.pull(3) end, "Hook buffer 3")
-map("n", "<leader>4", function() hook.pull(4) end, "Hook buffer 4")
-map("n", "<leader>5", function() hook.pull(5) end, "Hook buffer 5")
+map("n", "<leader>1", function() harpoon:list():select(1) end)
+map("n", "<leader>2", function() harpoon:list():select(2) end)
+map("n", "<leader>3", function() harpoon:list():select(3) end)
+map("n", "<leader>4", function() harpoon:list():select(4) end)
+map("n", "<leader>5", function() harpoon:list():select(5) end)
+
+
 
 -- Gruvbox --
 vim.pack.add{{src = "https://github.com/ellisonleao/gruvbox.nvim"}}
